@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DoctorPortal - Patient Records</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex min-h-screen flex-col">
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex h-16 items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white">
+<span class="material-symbols-outlined">health_and_safety</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">DoctorPortal</h1>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-semibold text-primary" href="#">Patients</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">Appointments</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">Analytics</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200 dark:border-slate-800 mx-1"></div>
+<div class="flex items-center gap-2">
+<div class="h-9 w-9 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden border border-primary/30">
+<span class="material-symbols-outlined text-primary">account_circle</span>
+</div>
+<span class="hidden lg:block text-sm font-semibold">Dr. Henderson</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+<div class="space-y-1">
+<h2 class="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">Patient Records</h2>
+<p class="text-slate-500 dark:text-slate-400">Total 1,284 patients registered in your clinic.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-primary px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]">person_add</span>
+                        Add New Patient
+                    </button>
+</div>
+</div>
+<div class="mb-8">
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-slate-400 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="block w-full rounded-xl border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 py-4 pl-12 pr-4 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary/20 transition-all placeholder:text-slate-400" placeholder="Search by name, ID, or medication history..." type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Patient Card 1 -->
+<div class="group relative flex flex-col rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-xl hover:border-primary/30 transition-all">
+<div class="flex items-start justify-between mb-4">
+<div class="h-16 w-16 rounded-full border-2 border-slate-100 dark:border-slate-800 overflow-hidden bg-slate-50 dark:bg-slate-800 shadow-inner">
+<img class="h-full w-full object-cover" data-alt="Close up portrait of a male patient smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA65fz0PGSUg8zK-rKczCkprqycQFo1aR7oYfRTEEe4GfVJcM8GHUztdYckJ9qt0bT_v59_rcBJ8NtNfP1n2oee68MFiD0UXF_CZvH8eAsU7s2S3jN0a3JSexylY2uMDp24uEZ9Cx7KlOyJ84n9FKqOIVbzccKkeIBb_mY93blo1PE187IW_2pWJ9QY7zFGJAzpSLMkKzDKx_-_tpGrxpk9_k-3U8D8vDC_36WMMEgqXuf6U8ZXTi1eontvWG2bnHx6gBl7qgngQT9h"/>
+</div>
+<span class="inline-flex items-center rounded-full bg-emerald-100 dark:bg-emerald-950/50 px-3 py-1 text-xs font-bold text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900">
+                            STABLE
+                        </span>
+</div>
+<div class="mb-4">
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">Alexander Wright</h3>
+<p class="text-sm font-medium text-slate-400 dark:text-slate-500 tracking-wider">ID: #PX-88210</p>
+</div>
+<div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800">
+<p class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2">Current Medications</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-medium text-slate-600 dark:text-slate-300">Lisinopril</span>
+<span class="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-medium text-slate-600 dark:text-slate-300">Metformin</span>
+</div>
+</div>
+</div>
+<!-- Patient Card 2 -->
+<div class="group relative flex flex-col rounded-2xl border border-red-200 dark:border-red-900/30 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-xl transition-all">
+<div class="flex items-start justify-between mb-4">
+<div class="h-16 w-16 rounded-full border-2 border-slate-100 dark:border-slate-800 overflow-hidden bg-slate-50 dark:bg-slate-800 shadow-inner">
+<img class="h-full w-full object-cover" data-alt="Portrait of a female patient looking forward" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7RcvjHQdyVDl7GH5GvWh4Z-YWt8FAig_IEslKX6qzSHec2nt3JzztEL8_yycvsgXUDuktJr5K0xBDyyHvXOOCt6M6t2cyGk4Jh-g3F2WcA3VXl3x1897_luNojtn5tHdvBwVFdh_LNmbXt48aF-g25BzuRGAqJSGZOZpYsEkiSVZKT0Fj6iHIJoj7NrOY5LyOSVYGyKuylLwmhykncVHoTpwuYDoKrgfFJfEgHSIMhPpe2BF3DiFgi4Yq2yt1gzJt4hTclfaKoCsC"/>
+</div>
+<span class="inline-flex items-center rounded-full bg-red-100 dark:bg-red-950/50 px-3 py-1 text-xs font-bold text-red-700 dark:text-red-400 border border-red-200 dark:border-red-900">
+                            HIGH RISK INTERACTION
+                        </span>
+</div>
+<div class="mb-4">
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">Sarah Jenkins</h3>
+<p class="text-sm font-medium text-slate-400 dark:text-slate-500 tracking-wider">ID: #PX-99024</p>
+</div>
+<div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800">
+<p class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2">Current Medications</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 rounded-lg bg-red-50 dark:bg-red-950/30 text-xs font-medium text-red-700 dark:text-red-300">Warfarin</span>
+<span class="px-2 py-1 rounded-lg bg-red-50 dark:bg-red-950/30 text-xs font-medium text-red-700 dark:text-red-300">Aspirin</span>
+</div>
+</div>
+</div>
+<!-- Patient Card 3 -->
+<div class="group relative flex flex-col rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-xl transition-all">
+<div class="flex items-start justify-between mb-4">
+<div class="h-16 w-16 rounded-full border-2 border-slate-100 dark:border-slate-800 overflow-hidden bg-slate-50 dark:bg-slate-800 shadow-inner">
+<img class="h-full w-full object-cover" data-alt="Portrait of an elderly male patient" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoTIuIzD6UzJ5NSmQs8wrEAV6fesVtduN61E6QzcpqEfAosZGzjbKZ16oTiIYO6AbcZE-vGDjK3WZgXc5nadoNoOCCvbXphgUZGHFL5rtKsgM3vK02GclIdmfKkqKs1oQie0VuLPEEHH9Guk7T3p_Bh46Fx12IaBfsh9HSOpu0Ohe83_R_suMROblHdsVR5Y_WfHiq0EmR3p7OxpZOVMUcjkfpbPTr-5hOk43bkBDotOjlVEumpCPCFia4IO2y1PpxAlIUXQiKuDXC"/>
+</div>
+<span class="inline-flex items-center rounded-full bg-emerald-100 dark:bg-emerald-950/50 px-3 py-1 text-xs font-bold text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900">
+                            STABLE
+                        </span>
+</div>
+<div class="mb-4">
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">Robert Chen</h3>
+<p class="text-sm font-medium text-slate-400 dark:text-slate-500 tracking-wider">ID: #PX-77129</p>
+</div>
+<div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800">
+<p class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2">Current Medications</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-medium text-slate-600 dark:text-slate-300">Amoxicillin</span>
+</div>
+</div>
+</div>
+<!-- Patient Card 4 -->
+<div class="group relative flex flex-col rounded-2xl border border-amber-200 dark:border-amber-900/30 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-xl transition-all">
+<div class="flex items-start justify-between mb-4">
+<div class="h-16 w-16 rounded-full border-2 border-slate-100 dark:border-slate-800 overflow-hidden bg-slate-50 dark:bg-slate-800 shadow-inner">
+<img class="h-full w-full object-cover" data-alt="Portrait of a young female patient" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1e53vEUje_O3BXa4OC76Hdi0007yVR5g22ivRKy-nlDzbieDyiJrr1eYGsKSjWdr7e0ob3n0Tg_oKETAe5c8Ekt4H3RxtbwwSgcwei796TEB1JUF__cnNyvgpKebpCZ9yG2a9Lu2R1ksskyYyN2d27MKKinN8TmCH_ilm6n8pXMdYeeZ09tGzCLAqhOzG11IZ7LGBR_bU72R_eIQQx9CDh6_i7EpBbcWZ3D_t48QrHeo0NUQSuzUkSL7mUYe-2f7c5LcKro0KUyaA"/>
+</div>
+<span class="inline-flex items-center rounded-full bg-amber-100 dark:bg-amber-950/50 px-3 py-1 text-xs font-bold text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-900">
+                            OBSERVATION
+                        </span>
+</div>
+<div class="mb-4">
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">Alice Johnson</h3>
+<p class="text-sm font-medium text-slate-400 dark:text-slate-500 tracking-wider">ID: #PX-44561</p>
+</div>
+<div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800">
+<p class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2">Current Medications</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-medium text-slate-600 dark:text-slate-300">Atorvastatin</span>
+<span class="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-medium text-slate-600 dark:text-slate-300">Clopidogrel</span>
+</div>
+</div>
+</div>
+<!-- Patient Card 5 -->
+<div class="group relative flex flex-col rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-xl transition-all">
+<div class="flex items-start justify-between mb-4">
+<div class="h-16 w-16 rounded-full border-2 border-slate-100 dark:border-slate-800 overflow-hidden bg-slate-50 dark:bg-slate-800 shadow-inner">
+<img class="h-full w-full object-cover" data-alt="Portrait of a professional man in business casual" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7KwzG8otiSuzEkXjqR5sjaGPyr2FQ_UK7Eit0uA0PMjb-I5c0NtGqnX05qohd4hAiDOP3u7BAxEbgzuO0pgwGRSCScL6DRvV7V8_fmeC1OHfERXtEcrMTv0Af_JuYL0hgyW9APPsVAkStIW9jHD5hsw26BGiLxlGTEIlJPAqpeuQ5QqY3Sy5ej4qWuIOHadJw-ksqBNvI5_RJOX_lpirYM7N4ekK_xB8rY5iy48Ey6zczJqqIT9xO4PWlU41w5g9-NZWQDmpa2NXH"/>
+</div>
+<span class="inline-flex items-center rounded-full bg-emerald-100 dark:bg-emerald-950/50 px-3 py-1 text-xs font-bold text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900">
+                            STABLE
+                        </span>
+</div>
+<div class="mb-4">
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">Michael Brown</h3>
+<p class="text-sm font-medium text-slate-400 dark:text-slate-500 tracking-wider">ID: #PX-22197</p>
+</div>
+<div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800">
+<p class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2">Current Medications</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-medium text-slate-600 dark:text-slate-300">Levothyroxine</span>
+</div>
+</div>
+</div>
+<!-- Patient Card 6 -->
+<div class="group relative flex flex-col rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-xl transition-all">
+<div class="flex items-start justify-between mb-4">
+<div class="h-16 w-16 rounded-full border-2 border-slate-100 dark:border-slate-800 overflow-hidden bg-slate-50 dark:bg-slate-800 shadow-inner">
+<img class="h-full w-full object-cover" data-alt="Portrait of a female patient with glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiZG2wSnSdSdUynXPTE-DYjSsCCrvoscZgJFWb-PtVlsPe1j6aonOojnDKDFDhE9Ac8urGvUSDfib5yTj8mI4oUWaM7fwa4WMr-nh5hB4xWFjDafKzvp8jRFLybOlblHvVrP9eSzU2zfNlukIIdLlHD4LPE8iN5tCpEbc-JJBTrDeyTCGJnhLsp4gLfnkFVsfQOeroEq9K4W_nu4T43ABBo81TrpvB-hw21_J-Ii4yUDFUlzqLKtQ5FJ5D4vvs-_iSKks4o7jU7_zI"/>
+</div>
+<span class="inline-flex items-center rounded-full bg-emerald-100 dark:bg-emerald-950/50 px-3 py-1 text-xs font-bold text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900">
+                            STABLE
+                        </span>
+</div>
+<div class="mb-4">
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">Emily Davis</h3>
+<p class="text-sm font-medium text-slate-400 dark:text-slate-500 tracking-wider">ID: #PX-33012</p>
+</div>
+<div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800">
+<p class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2">Current Medications</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-medium text-slate-600 dark:text-slate-300">Albuterol</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 flex items-center justify-between">
+<p class="text-sm text-slate-500 dark:text-slate-400 font-medium">Showing 6 of 1,284 patients</p>
+<div class="flex gap-2">
+<button class="h-10 px-4 rounded-xl border border-slate-200 dark:border-slate-800 text-sm font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">Previous</button>
+<button class="h-10 px-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-sm font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">Next</button>
+</div>
+</div>
+</main>
+<footer class="mt-auto border-t border-slate-200 dark:border-slate-800 py-8 text-center">
+<p class="text-sm text-slate-400 dark:text-slate-500">© 2024 DoctorPortal Health Systems. Confidential Patient Data.</p>
+</footer>
+</div>
+<!-- Floating Action Button for Mobile -->
+<button class="md:hidden fixed bottom-6 right-6 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-2xl shadow-primary/40 focus:ring-4 focus:ring-primary/20">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</body></html>

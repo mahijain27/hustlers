@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RxGuard AI Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-6 py-4 lg:px-40 bg-white dark:bg-slate-900">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center p-2 rounded-lg bg-primary text-white">
+<span class="material-symbols-outlined">health_metrics</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">RxGuard AI</h2>
+</div>
+<div class="flex gap-3">
+<button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center text-primary overflow-hidden">
+<span class="material-symbols-outlined">account_circle</span>
+</div>
+</div>
+</header>
+<main class="flex-1 flex justify-center py-8 px-4 lg:px-0">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+<h1 class="text-3xl font-bold px-4 mb-6">Settings</h1>
+<!-- Tabs Component -->
+<div class="px-4 mb-8">
+<div class="flex border-b border-slate-200 dark:border-slate-800 gap-8">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 pb-[13px] pt-2 hover:text-primary transition-colors" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Profile</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 pb-[13px] pt-2 hover:text-primary transition-colors" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Notifications</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 pb-[13px] pt-2 hover:text-primary transition-colors" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Security</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-primary pb-[13px] pt-2" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Preferences</p>
+</a>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-6 border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-sm">verified_user</span>
+<h2 class="text-xl font-bold">Clinical AI Analysis</h2>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm italic">These settings are restricted to verified Pharmacists and Medical Doctors only.</p>
+</div>
+<!-- Preferences Section -->
+<div class="p-6 space-y-10">
+<!-- OCR Confidence Threshold Slider -->
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<div>
+<p class="text-slate-900 dark:text-white font-semibold">OCR Confidence Threshold</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Minimum certainty required for automated prescription data extraction.</p>
+</div>
+<span class="text-primary font-bold text-lg">85%</span>
+</div>
+<div class="relative w-full h-6 flex items-center">
+<div class="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[85%]"></div>
+</div>
+<div class="absolute left-[85%] -ml-3 w-6 h-6 rounded-full bg-white border-2 border-primary shadow-sm cursor-pointer"></div>
+</div>
+</div>
+<!-- AI OCR Engine Radio Buttons -->
+<div class="space-y-4">
+<div>
+<p class="text-slate-900 dark:text-white font-semibold">AI OCR Engine</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Select the processing model for digitizing handwritten prescriptions.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<label class="group relative flex cursor-pointer flex-col rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover:border-primary dark:hover:border-primary focus:outline-none has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+<input checked="" class="sr-only" name="ocr_engine" type="radio" value="standard"/>
+<span class="text-sm font-bold mb-1">Standard Engine</span>
+<span class="text-xs text-slate-500">Fast, reliable for printed text.</span>
+</label>
+<label class="group relative flex cursor-pointer flex-col rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover:border-primary dark:hover:border-primary focus:outline-none has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+<input class="sr-only" name="ocr_engine" type="radio" value="neural"/>
+<span class="text-sm font-bold mb-1">High-Precision Neural</span>
+<span class="text-xs text-slate-500">Optimized for cursive scripts.</span>
+</label>
+<label class="group relative flex cursor-pointer flex-col rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover:border-primary dark:hover:border-primary focus:outline-none has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+<input class="sr-only" name="ocr_engine" type="radio" value="legacy"/>
+<span class="text-sm font-bold mb-1">Legacy OCR</span>
+<span class="text-xs text-slate-500">Maximum compatibility mode.</span>
+</label>
+</div>
+</div>
+<!-- Auto-flag Toggle -->
+<div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+<div class="flex gap-4">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div>
+<p class="text-slate-900 dark:text-white font-semibold">Auto-flag High Risk</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Automatically alert for contraindications and dosage anomalies.</p>
+</div>
+</div>
+<label class="inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="relative w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<!-- Actions -->
+<div class="p-6 bg-slate-50 dark:bg-slate-800/30 flex justify-end gap-3">
+<button class="px-6 py-2 rounded-lg font-bold text-sm bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors">Discard</button>
+<button class="px-6 py-2 rounded-lg font-bold text-sm bg-primary text-white hover:opacity-90 transition-opacity">Save Preferences</button>
+</div>
+</div>
+<!-- Disclaimer Section -->
+<footer class="mt-12 mb-8 px-4 text-center">
+<div class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-full mb-4">
+<span class="material-symbols-outlined text-[16px] text-slate-500">info</span>
+<span class="text-[12px] font-medium text-slate-500 uppercase tracking-widest">Medical Disclaimer</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed max-w-2xl mx-auto">
+                            RxGuard AI is an assistive tool intended for use by licensed healthcare professionals only. It should not be used as a replacement for clinical judgment or professional diagnosis. Users are responsible for verifying all AI-generated outputs against physical prescriptions and patient records. AI interpretations are subject to technical limitations and statistical variance.
+                        </p>
+<div class="mt-8 flex justify-center gap-6 text-xs text-slate-400">
+<a class="hover:text-primary underline" href="#">Privacy Policy</a>
+<a class="hover:text-primary underline" href="#">Terms of Service</a>
+<a class="hover:text-primary underline" href="#">Compliance Center</a>
+</div>
+</footer>
+</div>
+</main>
+</div>
+</div>
+</body></html>

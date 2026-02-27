@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Base colors expressed as RGB for Tailwind opacity support */
+  --color-primary: 236 91 19; /* #ec5b13 */
+  --color-background-light: 248 246 246; /* #f8f6f6 */
+  --color-background-dark: 34 22 16; /* #221610 */
+
+  /* Surface / border / text tokens (light mode) */
+  --color-surface: 255 255 255;
+  --color-surface-muted: 248 250 252; /* approx slate-50/100 */
+  --color-border: 226 232 240; /* approx slate-200 */
+  --color-foreground: 15 23 42; /* approx slate-900 */
+  --color-foreground-muted: 100 116 139; /* approx slate-500 */
+
+  /* Brand accents */
+  --color-deep-purple: 36 15 27; /* #240f1b */
+  --color-accent-pink: 255 139 203; /* #ff8bcb */
+
+  /* Semantic status colors */
+  --color-success: 34 197 94; /* #22c55e */
+  --color-danger: 239 68 68; /* #ef4444 */
+  --color-warning: 245 158 11; /* #f59e0b */
+  --color-info: 59 130 246; /* #3b82f6 */
+}
+
+html.dark {
+  /* Override a few tokens for dark mode */
+  --color-surface: 15 23 42; /* approx slate-900 */
+  --color-surface-muted: 15 23 42;
+  --color-border: 51 65 85; /* approx slate-700 */
+  --color-foreground: 248 250 252; /* approx slate-50 */
+  --color-foreground-muted: 148 163 184; /* approx slate-400 */
+}
+
+html {
+  font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+body {
+  background-color: rgb(var(--color-background-light));
+  color: rgb(var(--color-foreground));
+}
+
+html.dark body {
+  background-color: rgb(var(--color-background-dark));
+  color: rgb(var(--color-foreground));
+}
+

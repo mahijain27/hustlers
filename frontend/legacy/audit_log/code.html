@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RxGuard AI - Pharmacist Audit Log</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-3 lg:px-20">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-2xl">shield_with_heart</span>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-tight">RxGuard AI</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Dashboard</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary pb-1" href="#">Audit Log</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Risk Models</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<div class="h-10 w-10 rounded-full border-2 border-primary overflow-hidden" data-alt="Pharmacist professional headshot profile picture">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpwOC8xYlvVL-Vxq6tSISTzPERBr30ymtus9Vb7-1jF3-Hi6r9LzjOjqXJzhpdcuIb47gLIGP748BAkG3VWI11aLWGlnQCOpYQuuciWo3MXCVDDvNsy426sd3H4mnshN1OXGOINuF1M3JeCopdRfB7RkMEJRAW21wDn-mCgK6FImzhUaS4jJYMfAw_VP2ktldBdUOmlzjNnr-6yPbSoNuCFLHi4l3nQitz7ZyB4DpGUcQMINlXCllIbtHzPqqST4zRiRZix__qmy40"/>
+</div>
+</div>
+</header>
+<main class="flex-1 px-6 lg:px-20 py-8">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8">
+<div class="flex flex-col gap-1">
+<h1 class="text-3xl font-black tracking-tight text-slate-900 dark:text-slate-50">Pharmacist Audit Log</h1>
+<p class="text-slate-500 dark:text-slate-400">Review real-time AI risk assessments and pharmacist interventions.</p>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-700 transition-all">
+<span class="material-symbols-outlined text-lg">download</span>
+                        CSV
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-700 transition-all">
+<span class="material-symbols-outlined text-lg">picture_as_pdf</span>
+                        PDF
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary border border-primary/20 rounded-lg text-sm font-semibold hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined text-lg">share</span>
+                        FHIR Export
+                    </button>
+</div>
+</div>
+<!-- Filters Bar -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 flex flex-wrap gap-4 mb-6">
+<div class="flex-1 min-w-[240px]">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-sm" placeholder="Search Pharmacist or Patient ID..." type="text"/>
+</div>
+</div>
+<div class="flex flex-wrap gap-3 items-center">
+<button class="flex items-center gap-2 px-3 py-2 bg-slate-50 dark:bg-slate-800 rounded-lg text-sm font-medium border border-slate-100 dark:border-slate-700">
+<span class="material-symbols-outlined text-lg">calendar_today</span>
+<span>Last 30 Days</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200 dark:bg-slate-700 mx-1 hidden sm:block"></div>
+<div class="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
+<button class="px-3 py-1 text-xs font-bold rounded-md bg-white dark:bg-slate-700 shadow-sm">All</button>
+<button class="px-3 py-1 text-xs font-medium text-red-600 dark:text-red-400">High Risk</button>
+<button class="px-3 py-1 text-xs font-medium text-amber-600 dark:text-amber-400">Medium</button>
+<button class="px-3 py-1 text-xs font-medium text-emerald-600 dark:text-emerald-400">Low</button>
+</div>
+<button class="flex items-center gap-2 px-3 py-2 bg-slate-50 dark:bg-slate-800 rounded-lg text-sm font-medium border border-slate-100 dark:border-slate-700">
+<span>Status: All</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Table Container -->
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Date &amp; Time</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Pharmacist</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Patient ID</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 text-center">Risk Score</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Status</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Outcome</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="text-sm font-medium">Oct 24, 2023</div>
+<div class="text-xs text-slate-400">09:42 AM</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-xs font-bold text-slate-600 dark:text-slate-300">SC</div>
+<div class="text-sm font-medium">Sarah Chen, PharmD</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-mono text-slate-500">PT-8829-X</td>
+<td class="px-6 py-4 text-center">
+<span class="inline-flex items-center justify-center size-8 rounded-full border-2 border-red-500 text-red-600 dark:text-red-400 text-xs font-bold">92</span>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-tight bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400">High Risk</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2 text-red-600 dark:text-red-400">
+<span class="material-symbols-outlined text-lg">flag</span>
+<span class="text-sm font-semibold">Flagged</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="text-sm font-medium">Oct 24, 2023</div>
+<div class="text-xs text-slate-400">08:15 AM</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-xs font-bold text-slate-600 dark:text-slate-300">JM</div>
+<div class="text-sm font-medium">James Miller, RPh</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-mono text-slate-500">PT-1204-A</td>
+<td class="px-6 py-4 text-center">
+<span class="inline-flex items-center justify-center size-8 rounded-full border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 text-xs font-bold">14</span>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-tight bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">Low Risk</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+<span class="text-sm font-semibold">Approved</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="text-sm font-medium">Oct 23, 2023</div>
+<div class="text-xs text-slate-400">04:50 PM</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-xs font-bold text-slate-600 dark:text-slate-300">SC</div>
+<div class="text-sm font-medium">Sarah Chen, PharmD</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-mono text-slate-500">PT-9901-B</td>
+<td class="px-6 py-4 text-center">
+<span class="inline-flex items-center justify-center size-8 rounded-full border-2 border-amber-500 text-amber-600 dark:text-amber-400 text-xs font-bold">58</span>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-tight bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">Medium</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-lg">pending_actions</span>
+<span class="text-sm font-semibold">Under Review</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="text-sm font-medium">Oct 23, 2023</div>
+<div class="text-xs text-slate-400">02:10 PM</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-xs font-bold text-slate-600 dark:text-slate-300">RL</div>
+<div class="text-sm font-medium">Robert Lopez, PharmD</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-mono text-slate-500">PT-5562-K</td>
+<td class="px-6 py-4 text-center">
+<span class="inline-flex items-center justify-center size-8 rounded-full border-2 border-red-500 text-red-600 dark:text-red-400 text-xs font-bold">88</span>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-tight bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400">High Risk</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+<span class="text-sm font-semibold">Approved (Manual)</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="text-sm font-medium">Oct 23, 2023</div>
+<div class="text-xs text-slate-400">11:30 AM</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-xs font-bold text-slate-600 dark:text-slate-300">JM</div>
+<div class="text-sm font-medium">James Miller, RPh</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-mono text-slate-500">PT-4410-Q</td>
+<td class="px-6 py-4 text-center">
+<span class="inline-flex items-center justify-center size-8 rounded-full border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 text-xs font-bold">08</span>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-tight bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">Low Risk</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+<span class="text-sm font-semibold">Approved</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+<p class="text-xs text-slate-500 dark:text-slate-400">Showing 1 to 5 of 1,248 entries</p>
+<div class="flex items-center gap-1">
+<button class="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-400 disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined text-lg">chevron_left</span>
+</button>
+<button class="size-8 flex items-center justify-center rounded-lg bg-primary text-white text-xs font-bold">1</button>
+<button class="size-8 flex items-center justify-center rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-medium">2</button>
+<button class="size-8 flex items-center justify-center rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-medium">3</button>
+<span class="px-2 text-slate-400">...</span>
+<button class="size-8 flex items-center justify-center rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-medium">125</button>
+<button class="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-400">
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Stats Mini-Bar -->
+<footer class="px-6 lg:px-20 py-4 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center">
+<div class="flex gap-8 overflow-x-auto no-scrollbar">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-emerald-500"></div>
+<span class="text-xs font-semibold text-slate-500">842 Auto-Approved</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-red-500"></div>
+<span class="text-xs font-semibold text-slate-500">12 flagged High Risk</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-amber-500"></div>
+<span class="text-xs font-semibold text-slate-500">24 Pending Review</span>
+</div>
+</div>
+<div class="hidden md:block">
+<span class="text-[10px] text-slate-400 uppercase tracking-widest font-bold">System Status: Optimal</span>
+</div>
+</footer>
+</div>
+</body></html>

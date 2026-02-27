@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;family=Space+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"],
+                        "mono": ["Space Mono"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between border-b border-primary/10 bg-white dark:bg-background-dark/50 px-6 py-3 sticky top-0 z-50 backdrop-blur-md">
+<div class="flex items-center gap-4">
+<div class="size-8 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined">shield</span>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-tight text-slate-900 dark:text-white">RxGuard AI</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-slate-100 dark:bg-white/10 hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-slate-100 dark:bg-white/10 hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto w-full p-6">
+<!-- Header Section -->
+<div class="flex flex-wrap justify-between items-end gap-4 mb-8 border-b border-primary/10 pb-6">
+<div class="flex flex-col gap-1">
+<p class="font-mono text-sm text-primary font-bold uppercase tracking-wider">RX ID: RX-77021-BETA</p>
+<h1 class="text-4xl font-black leading-tight tracking-tight text-slate-900 dark:text-white">Safety Analysis Report</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Generated on Oct 24, 2023 - 14:20 UTC • System v4.2.1</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 px-4 py-2 rounded-lg font-bold flex items-center gap-2 border border-red-200 dark:border-red-800">
+<span class="material-symbols-outlined text-sm">warning</span>
+                        HIGH RISK DETECTED
+                    </div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Vision Analysis -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<div class="bg-white dark:bg-white/5 rounded-xl border border-slate-200 dark:border-white/10 overflow-hidden shadow-sm">
+<div class="p-4 border-b border-slate-200 dark:border-white/10 flex justify-between items-center bg-slate-50 dark:bg-white/5">
+<h3 class="font-bold text-sm uppercase tracking-widest text-slate-500">Scanned Document</h3>
+<span class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] px-2 py-0.5 rounded-full font-bold">LIVE OCR ACTIVE</span>
+</div>
+<div class="relative group">
+<div class="aspect-[3/4] bg-slate-200 dark:bg-slate-800 w-full relative overflow-hidden">
+<img alt="Prescription Scan" class="w-full h-full object-cover opacity-80" data-alt="Close up of a medical prescription paper with handwriting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANa7RxQ2CSy3Fo4GdSb8NWMYnGk6im89YKz_HirGqX94qHkX71RibXVB1Gqo9RkwyUUrJVbftvVCeop6HmE84moKTANVlvudblo9WNdMZxV9j-28UZvT42hFJzWGXCN39r12PyLWlaL0L9FXeyOd8MpQ75o1axF-49pkiVdqaKz26oBv2wcOry9-rjN9jdy24R0JOu7u-IwsWrLh1i7ymQW3OgDUe8kMXTn-3_nvQV7lg1QjJLRFjK7rbY1ymT1TOI3J7mamGRbMpI"/>
+<!-- Mock OCR Bounding Boxes -->
+<div class="absolute top-[20%] left-[15%] w-[40%] h-[5%] border-2 border-primary bg-primary/10 rounded-sm"></div>
+<div class="absolute top-[35%] left-[15%] w-[35%] h-[5%] border-2 border-primary bg-primary/10 rounded-sm"></div>
+<div class="absolute top-[20%] right-[10%] w-[10%] h-[5%] bg-primary/20 flex items-center justify-center text-[10px] font-bold text-primary">98%</div>
+</div>
+</div>
+<div class="p-4 bg-slate-50 dark:bg-white/5">
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-center">
+<span class="text-xs font-semibold text-slate-500">OCR Confidence Score</span>
+<span class="text-xs font-bold text-primary">98.4%</span>
+</div>
+<div class="w-full h-2 bg-slate-200 dark:bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 98%;"></div>
+</div>
+<p class="text-[11px] text-slate-400 leading-relaxed italic">Visual model detected Warfarin (5mg) and Aspirin (81mg) with high linguistic probability.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Clinical Intelligence -->
+<div class="lg:col-span-7 flex flex-col gap-6">
+<!-- Summary Alert -->
+<div class="bg-red-50 dark:bg-red-900/10 border-l-4 border-red-500 p-5 rounded-xl">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-red-500 text-3xl">error</span>
+<div>
+<h3 class="text-lg font-bold text-red-900 dark:text-red-200">Critical Drug-Drug Interaction</h3>
+<p class="text-red-700 dark:text-red-300/80 text-sm mt-1">Combining <strong>Warfarin</strong> and <strong>Aspirin</strong> significantly increases risk of major hemorrhage. Recommend pharmacist intervention.</p>
+</div>
+</div>
+</div>
+<!-- Extracted Drugs Table -->
+<div class="bg-white dark:bg-white/5 rounded-xl border border-slate-200 dark:border-white/10 overflow-hidden shadow-sm">
+<div class="p-4 border-b border-slate-200 dark:border-white/10 flex justify-between items-center">
+<h3 class="font-bold text-sm uppercase tracking-widest text-slate-500">Extracted Medications</h3>
+</div>
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-white/5 text-[11px] uppercase tracking-wider text-slate-400">
+<th class="px-4 py-3 font-semibold">Drug Name</th>
+<th class="px-4 py-3 font-semibold">Dosage</th>
+<th class="px-4 py-3 font-semibold">Confidence</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-white/5">
+<tr class="text-sm">
+<td class="px-4 py-4 font-bold text-slate-900 dark:text-white">Warfarin Sodium</td>
+<td class="px-4 py-4 text-slate-600 dark:text-slate-300">5mg - Once Daily</td>
+<td class="px-4 py-4">
+<span class="inline-flex items-center gap-1 text-green-600 dark:text-green-400 font-bold">
+<span class="material-symbols-outlined text-xs">check_circle</span> 99%
+                                        </span>
+</td>
+</tr>
+<tr class="text-sm">
+<td class="px-4 py-4 font-bold text-slate-900 dark:text-white">Aspirin (Enteric Coated)</td>
+<td class="px-4 py-4 text-slate-600 dark:text-slate-300">81mg - Once Daily</td>
+<td class="px-4 py-4">
+<span class="inline-flex items-center gap-1 text-green-600 dark:text-green-400 font-bold">
+<span class="material-symbols-outlined text-xs">check_circle</span> 97%
+                                        </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Interaction Details -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="p-4 bg-white dark:bg-white/5 rounded-xl border border-slate-200 dark:border-white/10 shadow-sm">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-amber-500 text-xl">info</span>
+<h4 class="font-bold text-sm">Mechanism</h4>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Additive anticoagulant and antiplatelet effects. Both drugs interfere with the clotting cascade at different stages.</p>
+</div>
+<div class="p-4 bg-white dark:bg-white/5 rounded-xl border border-slate-200 dark:border-white/10 shadow-sm">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-xl">clinical_notes</span>
+<h4 class="font-bold text-sm">Action Plan</h4>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Validate with prescribing physician. Monitor INR levels closely if co-administration is strictly necessary.</p>
+</div>
+</div>
+<!-- FHIR JSON Block -->
+<div class="bg-slate-900 rounded-xl overflow-hidden">
+<div class="flex items-center justify-between px-4 py-2 bg-slate-800">
+<span class="text-[10px] font-mono text-slate-400 uppercase tracking-widest">FHIR R4 JSON Export</span>
+<button class="text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+</div>
+<pre class="p-4 text-xs font-mono text-green-400 overflow-x-auto"><code>{
+  "resourceType": "MedicationRequest",
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [{
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "code": "855332",
+      "display": "Warfarin Sodium 5 MG Oral Tablet"
+    }]
+  },
+  "riskAssessment": {
+    "severity": "high",
+    "interaction": "aspirin_warfarin_001"
+  }
+}</code></pre>
+</div>
+<!-- Action Buttons -->
+<div class="flex gap-4 pt-4">
+<button class="flex-1 flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 transition-all">
+<span class="material-symbols-outlined">check_circle</span>
+                            APPROVE REPORT
+                        </button>
+<button class="flex-1 flex items-center justify-center gap-2 bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 text-slate-900 dark:text-white font-bold py-4 rounded-xl transition-all border border-slate-200 dark:border-white/10">
+<span class="material-symbols-outlined text-red-500">flag</span>
+                            FLAG FOR REVIEW
+                        </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

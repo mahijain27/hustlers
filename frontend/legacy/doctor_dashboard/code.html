@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>RxGuard AI - Doctor Dashboard</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 flex flex-col bg-white dark:bg-background-dark border-r border-slate-200 dark:border-slate-800">
+<div class="p-6 flex items-center gap-3">
+<div class="bg-primary p-2 rounded-lg text-white">
+<span class="material-symbols-outlined text-2xl">prescriptions</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight text-primary">RxGuard AI</h2>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<div class="flex items-center gap-3 px-3 py-2 rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-sm font-semibold">Dashboard</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl cursor-pointer transition-colors">
+<span class="material-symbols-outlined">group</span>
+<p class="text-sm font-medium">My Patients</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl cursor-pointer transition-colors">
+<span class="material-symbols-outlined">medication</span>
+<p class="text-sm font-medium">Prescriptions</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl cursor-pointer transition-colors">
+<span class="material-symbols-outlined">warning</span>
+<p class="text-sm font-medium">Clinical Alerts</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl cursor-pointer transition-colors">
+<span class="material-symbols-outlined">bar_chart</span>
+<p class="text-sm font-medium">Reports</p>
+</div>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-primary/20">
+<div class="flex items-center gap-2 text-primary mb-2">
+<span class="material-symbols-outlined text-sm">notifications_active</span>
+<span class="text-xs font-bold uppercase tracking-wider">Review Required</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-3">
+                        3 Pharmacist alerts need your immediate clinical review.
+                    </p>
+<button class="w-full bg-primary text-white text-xs font-bold py-2 rounded-lg hover:opacity-90 transition-opacity">
+                        View Alerts
+                    </button>
+</div>
+</div>
+<div class="p-4 flex items-center gap-3 border-t border-slate-200 dark:border-slate-800">
+<div class="size-10 rounded-full bg-slate-200 overflow-hidden border-2 border-primary/20" data-alt="Portrait of a doctor in professional attire">
+<img alt="Dr. Smith" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA78ZVUA1p0RiHVb-hDJS0lqrsTGA3aHDITPgVE9dCecmt6OS4w3Ydo_KkRO-TbucQG6kyEFGwXNI4_56SzfZZeaBzWsFKFbDnWAJQZv_EP_lgwHDT23biEpSUlmuRfXG0UHah9c7vE9yv8l7kZbZzWEBfagf4c3a63sAOsV1clIQtpEvfxEQULSmnH8WcJ1NKQkoAWUHOitv3Kb5WGjWEybN40jOwNhOQzG1-6kOutn1JV1XdVatSNb3rGEJRg6ycGRUZUWdwCbxwQ"/>
+</div>
+<div class="flex flex-col">
+<h1 class="text-sm font-bold">Dr. Smith</h1>
+<p class="text-xs text-slate-500">Clinical Director</p>
+</div>
+<span class="material-symbols-outlined text-slate-400 ml-auto text-sm cursor-pointer">settings</span>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col overflow-y-auto">
+<!-- Header -->
+<header class="h-16 flex items-center justify-between px-8 bg-white dark:bg-background-dark border-b border-slate-200 dark:border-slate-800 shrink-0">
+<div class="flex items-center gap-4 flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full bg-slate-50 dark:bg-slate-900 border-none rounded-xl pl-10 text-sm focus:ring-2 focus:ring-primary/50" placeholder="Search patients, drugs, or clinical notes..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="relative p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-primary rounded-full border-2 border-white dark:border-background-dark"></span>
+</button>
+<button class="bg-primary text-white px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+                        New Prescription
+                    </button>
+</div>
+</header>
+<div class="p-8 space-y-8">
+<!-- Welcome Section -->
+<div>
+<h2 class="text-3xl font-black text-slate-900 dark:text-slate-50">Clinical Dashboard</h2>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Real-time patient risk assessment and prescription monitoring</p>
+</div>
+<!-- Stat Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<span class="text-sm font-medium text-slate-500">My Patients</span>
+<span class="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-xs font-bold px-2 py-1 rounded-full">+2.4%</span>
+</div>
+<div class="flex items-end gap-2">
+<h3 class="text-3xl font-bold">1,284</h3>
+<span class="material-symbols-outlined text-slate-300 dark:text-slate-700 pb-1">person</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<span class="text-sm font-medium text-slate-500">Active Risks</span>
+<span class="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 text-xs font-bold px-2 py-1 rounded-full">+5.1%</span>
+</div>
+<div class="flex items-end gap-2">
+<h3 class="text-3xl font-bold">24</h3>
+<span class="material-symbols-outlined text-slate-300 dark:text-slate-700 pb-1">warning</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<span class="text-sm font-medium text-slate-500">Recent Prescriptions</span>
+<span class="bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-400 text-xs font-bold px-2 py-1 rounded-full">156 today</span>
+</div>
+<div class="flex items-end gap-2">
+<h3 class="text-3xl font-bold">156</h3>
+<span class="material-symbols-outlined text-slate-300 dark:text-slate-700 pb-1">receipt_long</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm border-l-4 border-l-primary">
+<div class="flex justify-between items-start mb-4">
+<span class="text-sm font-medium text-slate-500">Interaction Alerts</span>
+<span class="bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400 text-xs font-bold px-2 py-1 rounded-full">8 Urgent</span>
+</div>
+<div class="flex items-end gap-2">
+<h3 class="text-3xl font-bold">8</h3>
+<span class="material-symbols-outlined text-primary pb-1">error</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Table Section -->
+<div class="lg:col-span-2 space-y-6">
+<div class="flex items-center justify-between">
+<h3 class="text-xl font-bold">Recent Prescriptions</h3>
+<button class="text-sm text-primary font-semibold hover:underline">See all activity</button>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50">
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Patient</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Medication</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Status</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="font-bold">John Doe</div>
+<div class="text-xs text-slate-500">ID: 452-910</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm font-medium">Lisinopril 10mg</div>
+<div class="text-xs text-slate-400">1 cap/daily</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-[10px] font-bold uppercase">Dispensed</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<tr class="bg-red-50/50 dark:bg-red-900/10">
+<td class="px-6 py-4">
+<div class="font-bold">Sarah Williams</div>
+<div class="text-xs text-slate-500">ID: 883-211</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm font-medium">Warfarin 5mg</div>
+<div class="flex items-center gap-1 text-primary text-xs font-bold mt-1">
+<span class="material-symbols-outlined text-xs">flag</span>
+                                                Pharmacist Flagged: Interaction Risk
+                                            </div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded-full bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400 text-[10px] font-bold uppercase">Pending Review</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="bg-primary text-white px-3 py-1 rounded-lg text-xs font-bold">Resolve</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="font-bold">Michael Brown</div>
+<div class="text-xs text-slate-500">ID: 102-334</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm font-medium">Amoxicillin 500mg</div>
+<div class="text-xs text-slate-400">2 caps/daily</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-[10px] font-bold uppercase">Processing</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="font-bold">Emily Davis</div>
+<div class="text-xs text-slate-500">ID: 554-129</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm font-medium">Metformin 500mg</div>
+<div class="text-xs text-slate-400">1 cap/daily</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-[10px] font-bold uppercase">Dispensed</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Right Column Analytics & Alerts -->
+<div class="space-y-8">
+<div>
+<h3 class="text-xl font-bold mb-6">Weekly Clinical Analytics</h3>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm h-64 flex flex-col">
+<div class="flex-1 flex items-end justify-between gap-2 px-2">
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-lg h-[40%] group relative">
+<div class="absolute inset-0 bg-primary opacity-20 rounded-t-lg"></div>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-slate-900 text-white text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">42</div>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-lg h-[65%] group relative">
+<div class="absolute inset-0 bg-primary opacity-40 rounded-t-lg"></div>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-slate-900 text-white text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">68</div>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-lg h-[85%] group relative">
+<div class="absolute inset-0 bg-primary opacity-60 rounded-t-lg"></div>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-slate-900 text-white text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">92</div>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-lg h-[55%] group relative">
+<div class="absolute inset-0 bg-primary opacity-40 rounded-t-lg"></div>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-slate-900 text-white text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">58</div>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-lg h-[75%] group relative">
+<div class="absolute inset-0 bg-primary opacity-80 rounded-t-lg"></div>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-slate-900 text-white text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">81</div>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-lg h-[95%] group relative">
+<div class="absolute inset-0 bg-primary opacity-100 rounded-t-lg"></div>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-slate-900 text-white text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">110</div>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-lg h-[30%] group relative">
+<div class="absolute inset-0 bg-primary opacity-20 rounded-t-lg"></div>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-slate-900 text-white text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">32</div>
+</div>
+</div>
+<div class="flex justify-between mt-4 text-[10px] font-bold text-slate-400 uppercase">
+<span>Mon</span>
+<span>Tue</span>
+<span>Wed</span>
+<span>Thu</span>
+<span>Fri</span>
+<span>Sat</span>
+<span>Sun</span>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-6">Pharmacist Alerts</h3>
+<div class="space-y-4">
+<div class="p-4 bg-white dark:bg-slate-900 rounded-xl border-l-4 border-l-primary border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start">
+<span class="text-xs font-bold text-primary mb-1 block">URGENT REVIEW</span>
+<span class="text-[10px] text-slate-400">10m ago</span>
+</div>
+<p class="text-sm font-bold mb-1">Medication Interaction: Williams, S.</p>
+<p class="text-xs text-slate-500 leading-relaxed mb-3">Pharmacist reported potential interaction between Warfarin and new prescription.</p>
+<div class="flex gap-2">
+<button class="flex-1 bg-primary/10 text-primary py-1.5 rounded-lg text-xs font-bold">Review</button>
+<button class="px-3 bg-slate-50 dark:bg-slate-800 text-slate-400 rounded-lg"><span class="material-symbols-outlined text-sm">visibility_off</span></button>
+</div>
+</div>
+<div class="p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm opacity-80 hover:opacity-100 transition-opacity">
+<div class="flex justify-between items-start">
+<span class="text-xs font-bold text-slate-400 mb-1 block">CLARIFICATION</span>
+<span class="text-[10px] text-slate-400">2h ago</span>
+</div>
+<p class="text-sm font-bold mb-1">Dosage Query: Thompson, R.</p>
+<p class="text-xs text-slate-500 leading-relaxed mb-3">Confirmation needed on 500mg BID vs 1000mg QD for Metformin.</p>
+<div class="flex gap-2">
+<button class="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 py-1.5 rounded-lg text-xs font-bold">Review</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

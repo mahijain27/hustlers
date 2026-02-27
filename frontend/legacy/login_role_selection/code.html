@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login - RxGuard AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                        "deep-purple": "#240f1b",
+                        "accent-pink": "#ff8bcb",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark min-h-screen">
+<div class="flex flex-col lg:flex-row min-h-screen">
+<!-- Left Side: Branding and Hero Info -->
+<div class="lg:w-1/2 bg-deep-purple flex flex-col justify-center p-8 lg:p-24 relative overflow-hidden">
+<!-- Decorative background element -->
+<div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl"></div>
+<div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-accent-pink/10 rounded-full blur-3xl"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 bg-primary flex items-center justify-center rounded-xl">
+<span class="material-symbols-outlined text-white text-2xl">shield_moon</span>
+</div>
+<h2 class="text-white text-3xl font-black tracking-tight">RxGuard AI</h2>
+</div>
+<h1 class="text-white text-4xl lg:text-6xl font-black leading-tight mb-6">
+                    AI-Powered Prescription Risk Intelligence
+                </h1>
+<div class="flex flex-wrap gap-3 mb-12">
+<div class="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full border border-white/20">
+<span class="material-symbols-outlined text-accent-pink text-sm">document_scanner</span>
+<span class="text-white text-sm font-medium">OCR Scanning</span>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full border border-white/20">
+<span class="material-symbols-outlined text-accent-pink text-sm">pill</span>
+<span class="text-white text-sm font-medium">Interaction Check</span>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full border border-white/20">
+<span class="material-symbols-outlined text-accent-pink text-sm">database</span>
+<span class="text-white text-sm font-medium">FHIR Integration</span>
+</div>
+</div>
+<!-- Mock Preview Card -->
+<div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 max-w-md shadow-2xl">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">warning</span>
+<span class="text-primary font-bold text-sm uppercase tracking-wider">High Risk Alert</span>
+</div>
+<span class="text-white/40 text-xs">Just Now</span>
+</div>
+<p class="text-white text-lg font-semibold mb-2">Drug-Drug Interaction Detected</p>
+<p class="text-white/60 text-sm mb-4 leading-relaxed">
+                        Interaction between <span class="text-white font-medium italic">Warfarin</span> and <span class="text-white font-medium italic">Aspirin</span> may increase the risk of bleeding.
+                    </p>
+<div class="h-2 w-full bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[85%]"></div>
+</div>
+<div class="mt-4 flex justify-between items-center">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-deep-purple bg-slate-300 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Medical professional avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYFPP2bQwvVbPWeQwCXfEZhGY6UHpCRGOExGr8wnfpR80mZFIZPdb-E5BS4pYdzXvAqieW5QmlC4yYJOF8A1JqE3aEuwH43F5FjToh378FoI2mUraC8HxsJNoawxwzZz88ULDmJeniT8RseDPJVgJERvzWMYJ15NIJLJ-ypy6hUa7Q_98LeOKMiEmdMTuHRW3GVdwOFKTLCuR6XbkEHWyEXj4MQ0it8upwjQ-t24PRcTdglm7ijzcmohv2mQFja7vnxeIyGGV7T0Et"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-deep-purple bg-primary flex items-center justify-center text-[10px] text-white font-bold">
+                                +2
+                            </div>
+</div>
+<button class="text-accent-pink text-sm font-bold flex items-center gap-1">
+                            Review Details <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Side: Login Form -->
+<div class="lg:w-1/2 flex flex-col justify-center px-8 py-16 lg:px-24">
+<div class="max-w-md w-full mx-auto">
+<div class="mb-10 text-center lg:text-left">
+<h2 class="text-slate-900 dark:text-slate-100 text-3xl font-bold mb-2">Welcome Back</h2>
+<p class="text-slate-500 dark:text-slate-400">Please select your role and sign in to your account.</p>
+</div>
+<!-- Role Selection -->
+<div class="mb-8">
+<label class="block text-slate-700 dark:text-slate-300 text-sm font-bold mb-4">Select Your Role</label>
+<div class="grid grid-cols-3 gap-4">
+<button class="flex flex-col items-center gap-3 p-4 rounded-xl border-2 border-primary bg-primary/5 text-primary group transition-all">
+<div class="w-12 h-12 rounded-lg bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">local_pharmacy</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-wide">Pharmacist</span>
+</button>
+<button class="flex flex-col items-center gap-3 p-4 rounded-xl border-2 border-slate-200 dark:border-slate-800 hover:border-primary/50 text-slate-400 hover:text-primary transition-all group">
+<div class="w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-400 group-hover:bg-primary/10 group-hover:text-primary flex items-center justify-center">
+<span class="material-symbols-outlined">medical_services</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-wide">Doctor</span>
+</button>
+<button class="flex flex-col items-center gap-3 p-4 rounded-xl border-2 border-slate-200 dark:border-slate-800 hover:border-primary/50 text-slate-400 hover:text-primary transition-all group">
+<div class="w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-400 group-hover:bg-primary/10 group-hover:text-primary flex items-center justify-center">
+<span class="material-symbols-outlined">person</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-wide">Patient</span>
+</button>
+</div>
+</div>
+<!-- Sign In Form -->
+<form class="space-y-5" onsubmit="return false;">
+<div>
+<label class="block text-slate-700 dark:text-slate-300 text-sm font-bold mb-2" for="email">
+                            Email Address
+                        </label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400">
+<span class="material-symbols-outlined">mail</span>
+</span>
+<input class="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" id="email" placeholder="pharmacist@hospital.com" type="email"/>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between mb-2">
+<label class="block text-slate-700 dark:text-slate-300 text-sm font-bold" for="password">
+                                Password
+                            </label>
+<a class="text-primary text-xs font-bold hover:underline" href="#">Forgot password?</a>
+</div>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400">
+<span class="material-symbols-outlined">lock</span>
+</span>
+<input class="w-full pl-11 pr-12 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" id="password" placeholder="••••••••" type="password"/>
+<span class="absolute inset-y-0 right-0 flex items-center pr-4 text-slate-400 cursor-pointer">
+<span class="material-symbols-outlined">visibility</span>
+</span>
+</div>
+</div>
+<div class="flex items-center">
+<input class="w-4 h-4 text-primary border-slate-300 rounded focus:ring-primary" id="remember" type="checkbox"/>
+<label class="ml-2 text-sm text-slate-600 dark:text-slate-400" for="remember">Remember this device</label>
+</div>
+<button class="w-full bg-primary text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all transform active:scale-[0.98]">
+                        Sign In to Dashboard
+                    </button>
+</form>
+<div class="mt-10 pt-10 border-t border-slate-100 dark:border-slate-800 text-center">
+<p class="text-slate-500 dark:text-slate-400 text-sm">
+                        Don't have an account? 
+                        <a class="text-primary font-bold hover:underline" href="#">Contact Administrator</a>
+</p>
+</div>
+<div class="mt-8 flex justify-center gap-6">
+<div class="flex items-center gap-2 text-slate-400 text-[10px] font-bold uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+                        HIPAA Compliant
+                    </div>
+<div class="flex items-center gap-2 text-slate-400 text-[10px] font-bold uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm">encrypted</span>
+                        256-bit AES
+                    </div>
+</div>
+</div>
+</div>
+</div>
+</body></html>
